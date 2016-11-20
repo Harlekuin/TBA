@@ -22,10 +22,10 @@ class Person(Actor):
     def __init__(self, Name, Age, Health=100):
         self.Name = Name
         self.Age = Age
-        self.Inventory = {}
         self.Health = 100
         self.Status = 'Healthy'
-        self.Position = Position
+        Location = {}
+
         
     @check_dest
     def _act(self):
