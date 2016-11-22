@@ -12,21 +12,54 @@ class Actor:
     def __init__(self):
         self.Name = ""
         self.Description = ""
-        
+        self.Destroyed = False
         pass
         
     def _Destroy(self):
         self.Destroyed = True
-
+        
 class Person(Actor):
-    def __init__(self):
-        self.Age = 0
-        pass
+    def __init__(self, Name, Age, Health=100):
+        self.Name = Name
+        self.Age = Age
+        self.Health = 100
+        self.Status = 'Healthy'
+        Location = {}
+
         
     @check_dest
     def _act(self):
+        pass
         
+    def get_status(self):
+        if self.Health > 70:
+            return 'Healthy'
+        elif self.Health > 30:
+            return 'Worse for Wear'
+        elif self.Health > 0:
+            return 'Critical'
+        else:
+            return 'Dead'
+            
+    def Take_Damage(self, damage_i):
+        self.Health -= damage_i
 
+class Crew(Person):
+    def __init__(self, Position, Name, Age, Health=100):
+        self.Position = Position
+        self.Name = Name
+        self.Age = Age
+        self.Health = 100
+        self.Inventory = {}
+
+    def Print_Actor_Status(self, level = 'Full'):
+        print('\nStatus Report...Activated')
+        print('Name... %s' % self.Name)
+        print('Position... %s' % self.Position)
+        print('Age... %i' % self.Age)
+        print('Health Status... %s' % self.get_status())
+
+        
 class Item(Actor):
     def __init__(self):
         self.Requirements = {"expertise": "high"}
@@ -35,7 +68,7 @@ class Item(Actor):
         
     @check_dest
     def _use(self):
-        self._itemfunction():
+        self._itemfunction()
     
     def _itemfunction(self):
         self.Energy -= cost
