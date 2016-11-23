@@ -18,7 +18,15 @@ class Actor:
     def _Destroy(self):
         self.Destroyed = True
         
-class Person(Actor):
+
+class Lifeform(Actor):
+    def __init__(self):
+        self.Species
+        self.Name
+        Location = {}
+        
+            
+class Person(Lifeform):
     def __init__(self, Name, Age, Health=100):
         self.Name = Name
         self.Age = Age
@@ -44,6 +52,7 @@ class Person(Actor):
     def Take_Damage(self, damage_i):
         self.Health -= damage_i
 
+
 class Crew(Person):
     def __init__(self, Position, Name, Age, Health=100):
         self.Position = Position
@@ -59,7 +68,7 @@ class Crew(Person):
         print('Age... %i' % self.Age)
         print('Health Status... %s' % self.get_status())
 
-        
+
 class Item(Actor):
     def __init__(self):
         self.Requirements = {"expertise": "high"}
@@ -74,9 +83,25 @@ class Item(Actor):
         self.Energy -= cost
         self.Charges -= 1
         
-    
-        
-        
+class Location(Actor):
+    def __init__(self, Name, Description, Loc):
+        self.Name = Name
+        self.Description = Description
+        self.Loc = Loc
 
-        
-        
+class Planet(Location):
+    def __init__(self, Name, Description, Loc):
+        self.Name = Name
+        self.Description = Description
+        self.Loc = Loc
+        self.Details = [] #atmosphere, G, etc
+
+class Ship(Location):
+    def __init__(self, Name, Description, Loc):
+        self.Name = Name
+        self.Description = Description
+        self.Loc = Loc
+        self.Details = [] #Engines, Departments, ammo, fuel etc
+
+    def travel(self, Loc):
+        pass
