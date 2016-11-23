@@ -8,7 +8,7 @@ class Story():
         pass
 
     def LoadObjectives(self):
-        pass
+        pass #test
         
     def LoadEvents(self):
         pass
