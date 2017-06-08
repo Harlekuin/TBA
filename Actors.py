@@ -9,21 +9,21 @@ def check_dest(f):
 
 
 class Actor:
-    def __init__(self):
-        self.Name = ""
-        self.Description = ""
-        self.Destroyed = False
+    def __init__(self, name="", description=""):
+        self.name = name
+        self.description = description
+        self.destroyed = False
         pass
         
-    def _Destroy(self):
-        self.Destroyed = True
+    def destroy(self):
+        self.destroyed = True
         
 
 class Lifeform(Actor):
-    def __init__(self):
-        self.Species
-        self.Name
-        Location = {}
+    def __init__(self, name="", description="", species=""):
+        super().__init__(name, description)
+        self.species = species
+
         
             
 class Person(Lifeform):
